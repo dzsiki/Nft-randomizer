@@ -12,33 +12,32 @@ def progressbar(pg):
 progressbar(pg)
 pg += 1
 
-eyebrow = ["eyebrow_00.png", "eyebrow_01.png", "eyebrow_02.png", "eyebrow_03.png", "eyebrow_04.png", "eyebrow_05.png",
-           "eyebrow_06.png", "eyebrow_07.png", "eyebrow_08.png", "eyebrow_09.png"]
+eyebrow = [f"eyebrow_0{i}.png" for i in range(10)]
 eyebrow_sulyok = (10, 10, 10, 10, 10, 10, 10, 10, 10, 10)
 
-hairs = ["hair_00.png", ""]
-hairs_sulyok = (100, 0)
+hairs = [f"hair_0{i}.png" for i in range(5)]
+hairs_sulyok = (10, 10, 10, 10, 10)
 
-beards = ["beard_00.png", ""]
-beards_sulyok = (100, 0)
+beards = [f"beard_0{i}.png" for i in range(5)]
+beards_sulyok = (10, 10, 10, 10, 10)
 
-eyes = ["eye_00.png", ""]
-eyes_sulyok = (100, 0)
+eyes = [f"eye_0{i}.png" for i in range(10)]
+eyes_sulyok = (10, 10, 10, 10, 10, 10, 10, 10, 10, 10)
 
-hats = ["hat_00.png", ""]
-hats_sulyok = (100, 0)
+hats = [f"hat_00.png", ""]
+hats_sulyok = (10, 10)
 
-shirts = ["shirt_00.png", ""]
-shirts_sulyok = (100, 0)
+shirts = [f"shirt_00.png", ""]
+shirts_sulyok = (10, 10)
 
-teeths = ["teeth_00.png", ""]
-teeths_sulyok = (100, 0)
+teeths = [f"teeth_0{i}.png" for i in range(6)]
+teeths_sulyok = (10, 10, 10, 10, 10, 10)
 
-r_ears = ["r_ear_00.png", ""]
-r_ears_sulyok = (100, 0)
+r_ears = [f"r_ear_0{i}.png" for i in range(5)]
+r_ears_sulyok = (10, 10, 10, 10, 10)
 
-l_ears = ["l_ear_00.png", ""]
-l_ears_sulyok = (100, 0)
+l_ears = [f"l_ear_0{i}.png" for i in range(2)]
+l_ears_sulyok = (10, 10)
 
 
 def merge(background, paste):
@@ -49,21 +48,22 @@ def merge(background, paste):
 
 
 N = 16
-x, y = Image.open("base.png").size
+x, y = Image.open(f"base.png").size
 
 for n in range(N):
     image = Image.open("base.png")
     img = image.load()
     osszeskieg = [random.choices(l_ears, l_ears_sulyok, k=1)[0], random.choices(eyebrow, eyebrow_sulyok, k=1)[0],
                   random.choices(hairs, hairs_sulyok, k=1)[0],  random.choices(hats, hats_sulyok, k=1)[0],
-                  random.choices(beards, beards_sulyok, k=1)[0], random.choices(eyes, eyes_sulyok, k=1)[0],
-                  random.choices(shirts, shirts_sulyok, k=1)[0],
-                  random.choices(teeths, teeths_sulyok, k=1)[0], random.choices(r_ears, r_ears_sulyok, k=1)[0]]
+                  random.choices(eyes, eyes_sulyok, k=1)[0],
+                  random.choices(shirts, shirts_sulyok, k=1)[0], random.choices(teeths, teeths_sulyok, k=1)[0],
+                  random.choices(beards, beards_sulyok, k=1)[0], random.choices(r_ears, r_ears_sulyok, k=1)[0]]
 
+    print(osszeskieg)
     for kieg in osszeskieg:
-        if kieg != "semmi":
-            kieg = Image.open(kieg)
-            ke = kieg.load()
+        if kieg != "":
+            kiegkep = Image.open(kieg)
+            ke = kiegkep.load()
             merge(img, ke)
     image.save(f"odgy{n}.png")
     progressbar(pg)
