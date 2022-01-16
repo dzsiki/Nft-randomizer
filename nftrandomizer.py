@@ -91,14 +91,14 @@ for n in range(N):
                 newimg[i, j] = newcolors[colors.index(img[i, j])]
             else:
                 newimg[i, j] = (0, 0, 0, 255)
-    newimage.save(f"odgy{n}.png")
+    newimage.save(f"Kesz_kepek/odgy{n}.png")
     progressbar(pg)
     pg += 1
 
 kiegek = {"addon_00.png": 50}
 
 for n in range(N):
-    image = Image.open(f"odgy{n}.png")
+    image = Image.open(f"Kesz_kepek/odgy{n}.png")
     img = image.load()
 
     osszeskieg = []
@@ -113,6 +113,6 @@ for n in range(N):
             ke = kieg.load()
             merge(img, ke)
 
-    image.save(f"odgy{n}.png")
+    image.save(f"Kesz_kepek/odgy{n}.png")
     progressbar(pg)
     pg += 1
