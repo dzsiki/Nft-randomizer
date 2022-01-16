@@ -65,12 +65,12 @@ for n in range(N):
             kiegkep = Image.open(kieg)
             ke = kiegkep.load()
             merge(img, ke)
-    image.save(f"odgy{n}.png")
+    image.save(f"Kesz_kepek/odgy{n}.png")
     progressbar(pg)
     pg += 1
 
 for n in range(N):
-    image = Image.open(f"odgy{n}.png")
+    image = Image.open(f"Kesz_kepek/odgy{n}.png")
     img = image.load()
     colors = []
     for i in range(x):
